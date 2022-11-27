@@ -6,6 +6,7 @@ import { AppComponent } from './app.component';
 import { ViewComponent } from './view/view.component';
 import { TaskGroupListComponent } from './view/task-groups-list/task-group-list.component';
 import { TasksListComponent } from './view/tasks-list/tasks-list.component';
+import { AddTasksGroupComponent } from './view/task-groups-list/add-tasks-group/add-tasks-group.component';
 
 @NgModule({
   declarations: [
@@ -13,6 +14,7 @@ import { TasksListComponent } from './view/tasks-list/tasks-list.component';
     ViewComponent,
     TaskGroupListComponent,
     TasksListComponent,
+    AddTasksGroupComponent,
   ],
   imports: [
     BrowserModule,
