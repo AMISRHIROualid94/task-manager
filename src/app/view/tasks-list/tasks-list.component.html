@@ -1,27 +1,7 @@
-<h2>Tasks</h2>
+<h2>TasksGroup</h2>
 <ul class="list-task">
-  <li>
-    <h3 class="task-link">group 1</h3>
-    <div class="task-editor">
-      <a href="#" class="task-edit">
-        <i class="bi bi-pencil-square"></i>
-      </a>
-      <a href="#" class="task-remove">
-        <i class="bi bi-trash-fill"></i>
-      </a>
-    </div>
-  </li><li>
-    <h3 class="task-link">group 1</h3>
-    <div class="task-editor">
-      <a href="#" class="task-edit">
-        <i class="bi bi-pencil-square"></i>
-      </a>
-      <a href="#" class="task-remove">
-        <i class="bi bi-trash-fill"></i>
-      </a>
-    </div>
-  </li><li>
-    <h3 class="task-link">group 1</h3>
+  <li *ngFor="let tasks of tasks.tasks">
+    <h3 class="task-link">{{tasks.description}}</h3>
     <div class="task-editor">
       <a href="#" class="task-edit">
         <i class="bi bi-pencil-square"></i>

@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, Input, OnInit} from '@angular/core';
+import {TasksGroup} from "../../models/tasks-group";
 
 @Component({
   selector: 'app-task-group-list',
@@ -7,9 +8,11 @@ import { Component, OnInit } from '@angular/core';
 })
 export class TaskGroupListComponent implements OnInit {
 
+  @Input() tasksGroup:TasksGroup[];
   constructor() { }
 
   ngOnInit(): void {
+
   }
 
 }

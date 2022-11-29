@@ -5,6 +5,7 @@ import {AddTasksGroupComponent} from "./view/task-groups-list/add-tasks-group/ad
 import {AddTaskComponent} from "./view/tasks-list/add-task/add-task.component";
 
 const routes: Routes = [
+  {path:'task-view/:index',component:ViewComponent},
   {path: 'task-view', component:ViewComponent},
   {path: 'add-tasks-group', component:AddTasksGroupComponent},
   {path: 'add-task', component:AddTaskComponent},
