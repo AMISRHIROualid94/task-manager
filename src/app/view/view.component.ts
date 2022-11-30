@@ -12,6 +12,7 @@ export class ViewComponent implements OnInit {
 
   tasksGroup : TasksGroup[];
   tasks:TasksGroup;
+  index : number;
   constructor(private taskService : TaskService,
   private router:ActivatedRoute) { }
 
@@ -20,6 +21,7 @@ export class ViewComponent implements OnInit {
 
     this.router.params.subscribe(params => {
       this.tasks = this.taskService.getGroupTasks(params['index'])
+      this.index = params['index'];
     })
   }
 

@@ -4,7 +4,7 @@
   </a>
   <h2>Add new task</h2>
   <div class="inputs">
-    <input type="text"/>
-    <button>Add</button>
+    <input type="text" [(ngModel)]="description"/>
+    <button (click)="addNewTask()">Add</button>
   </div>
 </div>

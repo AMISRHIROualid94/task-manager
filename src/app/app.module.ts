@@ -8,6 +8,7 @@ import { TaskGroupListComponent } from './view/task-groups-list/task-group-list.
 import { TasksListComponent } from './view/tasks-list/tasks-list.component';
 import { AddTasksGroupComponent } from './view/task-groups-list/add-tasks-group/add-tasks-group.component';
 import {AddTaskComponent} from "./view/tasks-list/add-task/add-task.component";
+import {FormsModule} from "@angular/forms";
 
 @NgModule({
   declarations: [
@@ -20,7 +21,8 @@ import {AddTaskComponent} from "./view/tasks-list/add-task/add-task.component";
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
+    FormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]

@@ -45,7 +45,25 @@ export class TaskService {
 getTasksGroups(){
     return this.taskGroups;
 }
+getTasksGroupsById(groupId:number){
+    return this.taskGroups[groupId];
+}
 getGroupTasks(index:number){
   return this.taskGroups[index];
+}
+addNewTasksGroup(description: string){
+    let newTaskgroup : TasksGroup = new TasksGroup("0","description")
+    newTaskgroup.id = (+this.taskGroups[this.taskGroups.lastIndexOf(this.taskGroups[this.taskGroups.length - 1])].id + 1).toString()
+    newTaskgroup.title = description
+    this.taskGroups.push(newTaskgroup)
+    console.log(newTaskgroup.id)
+}
+
+addNewTask(groupId:number,description: string){
+    let newTask :Task = new Task("0","description")
+    let taskGroup : TasksGroup = this.getTasksGroupsById(groupId)
+    newTask.id = (taskGroup.tasks!.length + 1).toString()
+    newTask.description = description
+    taskGroup.tasks?.push(newTask)
 }
 }

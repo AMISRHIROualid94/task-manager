@@ -9,7 +9,7 @@ import {TasksGroup} from "../../models/tasks-group";
 export class TasksListComponent implements OnInit {
 
   @Input() tasks:TasksGroup;
-
+  @Input() index:number
   constructor() { }
 
   ngOnInit(): void {
