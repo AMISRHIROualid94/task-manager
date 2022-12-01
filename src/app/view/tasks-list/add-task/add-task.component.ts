@@ -9,11 +9,15 @@ import {ActivatedRoute} from "@angular/router";
 })
 export class AddTaskComponent implements OnInit {
 
-  description: string
+  description: string=""
+  currentIndex: number;
   constructor(private taskService : TaskService,
               private route:ActivatedRoute) { }
 
   ngOnInit(): void {
+    this.route.params.subscribe(params => {
+      this.currentIndex = +params['index'];
+    })
   }
 
 addNewTask(){

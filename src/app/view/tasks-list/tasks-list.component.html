@@ -1,12 +1,12 @@
 <h2>TasksGroup</h2>
 <ul class="list-task">
-  <li *ngFor="let tasks of tasks.tasks">
-    <h3 class="task-link">{{tasks.description}}</h3>
+  <li *ngFor="let task of tasksGroup.tasks;let i = index">
+    <h3 class="task-link">{{task.description}}</h3>
     <div class="task-editor">
       <a href="#" class="task-edit">
         <i class="bi bi-pencil-square"></i>
       </a>
-      <a href="#" class="task-remove">
+      <a routerLink="/task-view/{{index}}" class="task-remove" (click)="removeTask(index,task.id)">
         <i class="bi bi-trash-fill"></i>
       </a>
     </div>

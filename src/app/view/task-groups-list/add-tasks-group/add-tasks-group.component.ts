@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import {TaskService} from "../../../services/task.service";
+import {ActivatedRoute} from "@angular/router";
 
 @Component({
   selector: 'app-add-tasks-group',
@@ -8,14 +9,17 @@ import {TaskService} from "../../../services/task.service";
 })
 export class AddTasksGroupComponent implements OnInit {
   title: any;
-
-  constructor(private taskService:TaskService) { }
+  currentIndex: number;
+  constructor(private taskService:TaskService,
+              private route : ActivatedRoute) { }
 
   ngOnInit(): void {
+
   }
 
   addNewTaskGroup(){
     this.taskService.addNewTasksGroup(this.title)
     alert("successfully added")
+    this.currentIndex = this.taskService.groupIndex;
   }
 }

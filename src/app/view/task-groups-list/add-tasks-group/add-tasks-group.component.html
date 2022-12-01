@@ -1,10 +1,12 @@
 <div class="add-task-group-view">
-  <a class="back" routerLink="/task-view">
+  <a class="back" routerLink="/add-task/{{currentIndex}}">
     <i class="bi bi-arrow-left-square-fill">Back</i>
   </a>
   <h2>Add new tasks group</h2>
-  <div class="inputs">
-    <input type="text" [(ngModel)]="title"/>
-    <button (click)="addNewTaskGroup()">Add</button>
-  </div>
+  <form  (ngSubmit)="addNewTaskGroup()">
+    <div class="inputs">
+      <input type="text" [(ngModel)]="title" [ngModelOptions]="{standalone: true}"/>
+      <button type="submit">Add</button>
+    </div>
+  </form>
 </div>

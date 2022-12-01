@@ -8,7 +8,7 @@ import {TasksGroup} from "../../models/tasks-group";
 })
 export class TaskGroupListComponent implements OnInit {
 
-  @Input() tasksGroup:TasksGroup[];
+  @Input() tasksGroups:TasksGroup[];
   constructor() { }
 
   ngOnInit(): void {

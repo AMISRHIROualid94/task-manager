@@ -1,10 +1,12 @@
 <div class="add-task-view">
-  <a class="back" routerLink="/task-view">
+  <a class="back" routerLink="/task-view/{{currentIndex}}">
     <i class="bi bi-arrow-left-square-fill">Back</i>
   </a>
   <h2>Add new task</h2>
+  <form  (ngSubmit)="addNewTask()">
   <div class="inputs">
-    <input type="text" [(ngModel)]="description"/>
-    <button (click)="addNewTask()">Add</button>
+      <input type="text" [(ngModel)]="description" [ngModelOptions]="{standalone: true}"/>
+      <button type="submit">Add</button>
   </div>
+  </form>
 </div>
