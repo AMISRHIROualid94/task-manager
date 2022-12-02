@@ -1,15 +1,16 @@
 <h2>TasksGroup</h2>
-<ul class="list-task">
+<ul class="list-task" *ngIf="isNotNull()">
   <li *ngFor="let task of tasksGroup.tasks;let i = index">
-    <h3 class="task-link">{{task.description}}</h3>
+    <h3 class="task-link">{{task!.description}}</h3>
     <div class="task-editor">
       <a href="#" class="task-edit">
         <i class="bi bi-pencil-square"></i>
       </a>
-      <a routerLink="/task-view/{{index}}" class="task-remove" (click)="removeTask(index,task.id)">
+      <a routerLink="/task-view/{{index}}" class="task-remove" (click)="removeTask(index,task!.id)">
         <i class="bi bi-trash-fill"></i>
       </a>
     </div>
   </li>
 </ul>
-<a href="#" routerLink="/add-task/{{index}}" class="add-task"></a>
+<a href="#" routerLink="/add-task/{{index}}" class="add-task"
+*ngIf=""></a>

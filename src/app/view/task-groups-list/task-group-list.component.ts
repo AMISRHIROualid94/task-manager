@@ -1,5 +1,6 @@
 import {Component, Input, OnInit} from '@angular/core';
 import {TasksGroup} from "../../models/tasks-group";
+import {TaskService} from "../../services/task.service";
 
 @Component({
   selector: 'app-task-group-list',
@@ -9,10 +10,12 @@ import {TasksGroup} from "../../models/tasks-group";
 export class TaskGroupListComponent implements OnInit {
 
   @Input() tasksGroups:TasksGroup[];
-  constructor() { }
+  isActive:boolean = false;
+  constructor(private taskService:TaskService) { }
 
   ngOnInit(): void {
 
   }
+
 
 }

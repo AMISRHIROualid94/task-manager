@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import {TaskService} from "../services/task.service";
 import {TasksGroup} from "../models/tasks-group";
-import {ActivatedRoute} from "@angular/router";
+import {ActivatedRoute, Router} from "@angular/router";
 
 @Component({
   selector: 'app-view',
@@ -14,15 +14,19 @@ export class ViewComponent implements OnInit {
   tasksGroup:TasksGroup;
   index : number;
   constructor(private taskService : TaskService,
-              private router:ActivatedRoute) { }
+              private router:ActivatedRoute,
+              private route:Router) { }
 
   ngOnInit(): void {
     this.tasksGroups =  this.taskService.getTasksGroups()
-
     this.router.params.subscribe(params => {
-      this.tasksGroup = this.taskService.getGroupTasks(params['index'])
-      this.index = params['index'];
+      if (params['index']){
+        this.tasksGroup = this.taskService.getGroupTasks(params['index']!)
+        this.index = params['index'];
+      }
+
     })
+
   }
 
 }
