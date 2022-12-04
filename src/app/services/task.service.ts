@@ -7,8 +7,11 @@ import {Task} from "../models/Task";
 })
 export class TaskService {
 
+  isActive = false;
+  editIsActive = false;
    groupIndex = 0
   deletedTaskGroup:any;
+  currentTask:Task
   tasks1 : Task[]=[
     new Task("1","task1"),
     new Task("2","task2"),
@@ -46,6 +49,15 @@ export class TaskService {
 
   getTasksGroups(){
     return this.taskGroups;
+  }
+  getTask(groupIndex: number,taskId: string){
+    let tg = this.getTasksGroupsByIndex(groupIndex)
+    tg.tasks?.forEach(task => {
+      if (task.id === taskId) {
+        this.currentTask=task
+      }
+    })
+    return this.currentTask
   }
   getTasksGroupsByIndex(groupIndex:number){
     return this.taskGroups[groupIndex];
@@ -86,8 +98,20 @@ deleteTask(groupIndex:number,taskId:string){
     this.taskGroups.splice(this.taskGroups.indexOf(tg),1)
   }
 }
+editTask(groupIndex:number,taskId:string,newDescription:string){
+  let tg = this.getTasksGroupsByIndex(groupIndex)
+  tg.tasks?.forEach(task => {
+    if (task.id === taskId) {
+     task.description = newDescription;
+    }
+  })
+}
 deleteAllTasksGroups() {
-  this.taskGroups = []
+  this.taskGroups.splice(0,this.taskGroups.length)
+  this.tasks1.splice(0,this.tasks1.length)
+  this.tasks2.splice(0,this.tasks2.length)
+  this.tasks3.splice(0,this.tasks3.length)
+  this.tasks4.splice(0,this.tasks4.length)
 }
 
 }

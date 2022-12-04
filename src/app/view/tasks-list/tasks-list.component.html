@@ -1,9 +1,14 @@
 <h2>TasksGroup</h2>
 <ul class="list-task" *ngIf="isNotNull()">
+  <li
+    *ngIf="tasksGroup.tasks!.length === 0" class="alert alert-warning justify-content-start test">
+    Add A new task....
+  </li>
   <li *ngFor="let task of tasksGroup.tasks;let i = index">
     <h3 class="task-link">{{task!.description}}</h3>
     <div class="task-editor">
-      <a href="#" class="task-edit">
+      <a href="#" class="task-edit" routerLink="/task-view/{{index}}/edit-task/{{task.id}}"
+      (click)="editIsActive()">
         <i class="bi bi-pencil-square"></i>
       </a>
       <a routerLink="/task-view/{{index}}" class="task-remove" (click)="removeTask(index,task!.id)">
@@ -13,4 +18,4 @@
   </li>
 </ul>
 <a href="#" routerLink="/add-task/{{index}}" class="add-task"
-*ngIf=""></a>
+*ngIf="isActive"></a>

@@ -12,14 +12,14 @@ export class TasksListComponent implements OnInit {
 
   @Input() tasksGroup:TasksGroup ;
   @Input() index:number
-  tempIndex:number = 0;
   isActive:boolean = false;
+  tab:number[] = [1,2,3,4,5,6,7,8,9,10]
   constructor(private taskService:TaskService,
               private route:Router,
               private router:ActivatedRoute) { }
 
   ngOnInit(): void {
-
+      this.isActive = this.taskService.isActive
   }
 
 
@@ -36,5 +36,9 @@ export class TasksListComponent implements OnInit {
 
   isNotNull() :boolean{
     return this.tasksGroup != null
+  }
+
+  editIsActive() {
+    this.taskService.editIsActive = true;
   }
 }

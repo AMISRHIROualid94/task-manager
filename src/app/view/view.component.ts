@@ -18,11 +18,15 @@ export class ViewComponent implements OnInit {
               private route:Router) { }
 
   ngOnInit(): void {
+    this.taskService.editIsActive = false
     this.tasksGroups =  this.taskService.getTasksGroups()
     this.router.params.subscribe(params => {
       if (params['index']){
         this.tasksGroup = this.taskService.getGroupTasks(params['index']!)
         this.index = params['index'];
+        this.taskService.isActive = true;
+      }else {
+        this.taskService.isActive = false;
       }
 
     })

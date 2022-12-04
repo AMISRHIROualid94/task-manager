@@ -48,6 +48,59 @@ li
   margin-top: -34px
   margin-left: -14px
 
+.deleteAllbtn
+  text-decoration: none
+  display: block
+  background-color: red
+  color: white
+  height: 50px
+  width: 50px
+  padding: 20px
+  line-height: 20px
+  border-radius: 5px
+  display: flex
+  justify-content: center
+  align-items: center
+  border-radius: 50%
+  position: relative
+
+.deleteAllbtn:after
+    opacity: 0
+    content: "Delete All"
+    font-size: 18px
+    width: 80px
+    position: absolute
+    top: 15px
+    left: 60px
+    background-color: white
+    color: black
+    border-radius: 5px
+    box-shadow: 5px 5px 20px black
+    transition: All .5s ease
+
+.deleteAllbtn:before
+    opacity: 0
+    content: ""
+    width: 0
+    height: 0
+    position: absolute
+    top: 15px
+    left: 42px
+    color: black
+    border-style: solid
+    border-width: 10px
+    border-color: transparent white transparent transparent
+    transition: All .5s ease
+
+.deleteAllbtn:hover:after,
+.deleteAllbtn:hover:before
+  opacity: 1
+
+
+
+.warning
+  width: 90% !important
+  margin: 0 auto
 
 
 

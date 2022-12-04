@@ -10,14 +10,25 @@ import {ActivatedRoute} from "@angular/router";
 export class AddTaskComponent implements OnInit {
 
   description: string=""
-  currentIndex: number;
+  currentIndex: number
+  editIsActive= false
   constructor(private taskService : TaskService,
               private route:ActivatedRoute) { }
 
   ngOnInit(): void {
     this.route.params.subscribe(params => {
       this.currentIndex = +params['index'];
+      if(this.taskService.editIsActive){
+        this.description = this.taskService.getTask(this.currentIndex,params['taskId']).description
+      }
+      if(params['taskId']){
+        this.editIsActive = true
+      }
+      else {
+        this.editIsActive = this.taskService.editIsActive
+      }
     })
+
   }
 
 addNewTask(){
@@ -28,4 +39,11 @@ addNewTask(){
 
 }
 
+  editTask() {
+    this.route.params.subscribe(params => {
+      this.taskService.editTask(params['index'],params['taskId'],this.description)
+    })
+    alert("Task Edited successfully")
+    this.taskService.editIsActive = false
+  }
 }

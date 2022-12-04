@@ -10,12 +10,18 @@ import {TaskService} from "../../services/task.service";
 export class TaskGroupListComponent implements OnInit {
 
   @Input() tasksGroups:TasksGroup[];
-  isActive:boolean = false;
+  isActive:boolean=true;
   constructor(private taskService:TaskService) { }
 
   ngOnInit(): void {
-
+      if(this.taskService.taskGroups.length > 0) {
+        this.isActive = true;
+      }
   }
 
 
+  deleteAll() {
+    this.taskService.deleteAllTasksGroups();
+    this.isActive = false;
+  }
 }

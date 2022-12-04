@@ -3,5 +3,13 @@
   <li *ngFor="let tasksgroup of tasksGroups;let index = index">
     <a class="group-link" routerLink="/task-view/{{index}}">{{tasksgroup.title}}</a>
   </li>
+  <li *ngIf="tasksGroups.length === 0" class="alert alert-warning w-80 warning">
+    Add A new Task Group ....
+  </li>
 </ul>
-<a href="#" class="add-group" routerLink="/add-tasks-group"></a>
+<div class="links d-flex align-items-center mt-4">
+  <a href="" class="add-group" routerLink="/add-tasks-group"></a>
+  <a routerLink="/task-view" class="deleteAllbtn" (click)="deleteAll()"><i class="bi bi-trash-fill"></i></a>
+</div>
+
+
