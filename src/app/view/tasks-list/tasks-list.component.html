@@ -1,7 +1,7 @@
 <h2>TasksGroup</h2>
 <ul class="list-task" *ngIf="isNotNull()">
   <li
-    *ngIf="tasksGroup.tasks!.length === 0" class="alert alert-warning justify-content-start test">
+    *ngIf="tasksGroup.tasks!.length === 0" class="alert alert-warning justify-content-start">
     Add A new task....
   </li>
   <li *ngFor="let task of tasksGroup.tasks;let i = index">
