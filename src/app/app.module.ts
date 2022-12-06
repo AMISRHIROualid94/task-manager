@@ -9,6 +9,7 @@ import { TasksListComponent } from './view/tasks-list/tasks-list.component';
 import { AddTasksGroupComponent } from './view/task-groups-list/add-tasks-group/add-tasks-group.component';
 import {AddTaskComponent} from "./view/tasks-list/add-task/add-task.component";
 import {FormsModule} from "@angular/forms";
+import { TestComponent } from './test/test.component';
 
 @NgModule({
   declarations: [
@@ -17,7 +18,8 @@ import {FormsModule} from "@angular/forms";
     TaskGroupListComponent,
     TasksListComponent,
     AddTasksGroupComponent,
-    AddTaskComponent
+    AddTaskComponent,
+    TestComponent
   ],
   imports: [
     BrowserModule,
