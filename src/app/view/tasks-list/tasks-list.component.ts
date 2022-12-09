@@ -2,6 +2,7 @@ import {Component, Input, OnInit} from '@angular/core';
 import {TasksGroup} from "../../models/tasks-group";
 import {TaskService} from "../../services/task.service";
 import {ActivatedRoute, Router} from "@angular/router";
+import {StyleService} from "../../services/style.service";
 
 @Component({
   selector: 'app-tasks-list',
@@ -16,10 +17,12 @@ export class TasksListComponent implements OnInit {
   tab:number[] = [1,2,3,4,5,6,7,8,9,10]
   constructor(private taskService:TaskService,
               private route:Router,
-              private router:ActivatedRoute) { }
+              private router:ActivatedRoute,
+              private styileService : StyleService) { }
 
   ngOnInit(): void {
       this.isActive = this.taskService.isActive
+      this.styileService.logData()
   }
 
 

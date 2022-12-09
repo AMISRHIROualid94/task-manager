@@ -1,0 +1,12 @@
+{
+  "Style": [
+    {
+      "bodyColor": "antiquewhite",
+      "listGroupColor": "darksalmon",
+      "listGroupBtnColor": "#dc353540",
+      "lisGroupBtnTxtColor": "chocolate",
+      "activeListGrpColor": "chocolate",
+      "activeListGrpTxtColor":"white"
+    }
+  ]
+}
