@@ -20,6 +20,7 @@ export class AddTasksGroupComponent implements OnInit {
   addNewTaskGroup(){
     this.taskService.addNewTasksGroup(this.title)
     alert("successfully added")
+    
     this.currentIndex = this.taskService.groupIndex;
   }
 }
