@@ -10,6 +10,7 @@ import { AddTasksGroupComponent } from './view/task-groups-list/add-tasks-group/
 import {AddTaskComponent} from "./view/tasks-list/add-task/add-task.component";
 import {FormsModule} from "@angular/forms";
 import { StyleConfigComponent } from './view/style-config/style-config.component';
+import {HttpClientModule} from "@angular/common/http";
 
 @NgModule({
   declarations: [
@@ -24,7 +25,8 @@ import { StyleConfigComponent } from './view/style-config/style-config.component
   imports: [
     BrowserModule,
     AppRoutingModule,
-    FormsModule
+    FormsModule,
+    HttpClientModule
   ],
   providers: [],
   bootstrap: [AppComponent]

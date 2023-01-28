@@ -19,7 +19,10 @@ export class ViewComponent implements OnInit {
 
   ngOnInit(): void {
     this.taskService.editIsActive = false
-    this.tasksGroups =  this.taskService.getTasksGroups()
+
+    this.taskService.getTasksGroupsApi().subscribe(res =>{
+      this.tasksGroups = res
+    })
     this.router.params.subscribe(params => {
       if (params['index']){
         this.tasksGroup = this.taskService.getGroupTasks(params['index']!)
