@@ -33,5 +33,6 @@ public class DataLoader implements CommandLineRunner {
 
         TaskGroup taskGroup1 = new TaskGroup(1L,"Group 1",tasks);
         taskGroupRepository.save(taskGroup1);
+
     }
 }

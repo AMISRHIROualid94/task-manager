@@ -22,6 +22,10 @@ public class TaskGroupController {
         return taskGroupRepository.findAll();
     }
 
+    @GetMapping("/{id}")
+    public TaskGroup taskGroup(@PathVariable Long id){
+        return taskGroupRepository.findById(id).get();
+    }
     @PostMapping
     public TaskGroup addTaskGroup(@RequestBody TaskGroup taskGroup){
         return taskGroupRepository.save(taskGroup);

@@ -49,9 +49,6 @@ export class TaskService {
   ];
 
 
-  getTasksGroups(){
-    return this.taskGroups;
-  }
   getTasksGroupsApi():Observable<any>{
     return this.http.get(this.url);
   }
@@ -67,16 +64,20 @@ export class TaskService {
   getTasksGroupsByIndex(groupIndex:number){
     return this.taskGroups[groupIndex];
   }
-  getGroupTasks(index:number){
-    return this.taskGroups[index];
+  getGroupTasks(index:number):Observable<any>{
+
+    return this.http.get(this.url+"/"+index+1);
   }
   addNewTasksGroup(description: string){
     let newTaskgroup : TasksGroup = new TasksGroup("0","description",[])
-    if(this.getTasksGroups().length==0){
+    this.getTasksGroupsApi().subscribe(res=>{
+      if(res.length==0){
         newTaskgroup.id = "0"
-    }else {
-      newTaskgroup.id = (+this.taskGroups[this.taskGroups.lastIndexOf(this.taskGroups[this.taskGroups.length - 1])].id + 1).toString()
-    }
+      }else {
+        newTaskgroup.id = (+this.taskGroups[this.taskGroups.lastIndexOf(this.taskGroups[this.taskGroups.length - 1])].id + 1).toString()
+      }
+    })
+
 
     newTaskgroup.title = description
     this.taskGroups.push(newTaskgroup)

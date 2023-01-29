@@ -25,7 +25,10 @@ export class ViewComponent implements OnInit {
     })
     this.router.params.subscribe(params => {
       if (params['index']){
-        this.tasksGroup = this.taskService.getGroupTasks(params['index']!)
+       this.taskService.getGroupTasks(params['index']!).subscribe(res=>{
+         this.tasksGroup = res
+         console.log(res)
+       })
         this.index = params['index'];
         this.taskService.isActive = true;
       }else {
