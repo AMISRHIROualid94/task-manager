@@ -31,9 +31,9 @@ public class TaskGroupController {
         return taskGroupRepository.save(taskGroup);
     }
 
-    @DeleteMapping("/{id}")
-    public void deleteTaskGroup(@PathVariable Long id){
-        this.taskGroupRepository.deleteById(id);
+    @DeleteMapping("/deleteall")
+    public void deleteTaskGroup(){
+        this.taskGroupRepository.deleteAll();
     }
 
     @PutMapping("/{id}")

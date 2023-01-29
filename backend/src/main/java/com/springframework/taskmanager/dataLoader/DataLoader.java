@@ -23,9 +23,9 @@ public class DataLoader implements CommandLineRunner {
     @Override
     public void run(String... args) throws Exception {
 
-        Task task1 = new Task(1L,"task1");
+        Task task1 = new Task(1L,"task test 1");
         taskRepository.save(task1);
-        Task task2 = new Task(2L,"task2");
+        Task task2 = new Task(2L,"task test 2");
         taskRepository.save(task2);
         Set<Task> tasks = new HashSet<>();
         tasks.add(task1);

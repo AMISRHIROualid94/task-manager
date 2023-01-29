@@ -1,8 +1,8 @@
 export class Task{
-   public id:string;
+   public id?:number;
    public description:string;
 
-   constructor(id:string, description:string) {
+   constructor(id:number, description:string) {
       this.id = id;
       this.description = description;
    }

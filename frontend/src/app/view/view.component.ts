@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import {TaskService} from "../services/task.service";
+import {TaskGroupService} from "../services/taskGroup.service";
 import {TasksGroup} from "../models/tasks-group";
 import {ActivatedRoute, Router} from "@angular/router";
 
@@ -12,8 +12,8 @@ export class ViewComponent implements OnInit {
 
   tasksGroups : TasksGroup[];
   tasksGroup:TasksGroup;
-  index : number;
-  constructor(private taskService : TaskService,
+  id : number;
+  constructor(private taskService : TaskGroupService,
               private router:ActivatedRoute,
               private route:Router) { }
 
@@ -24,12 +24,11 @@ export class ViewComponent implements OnInit {
       this.tasksGroups = res
     })
     this.router.params.subscribe(params => {
-      if (params['index']){
-       this.taskService.getGroupTasks(params['index']!).subscribe(res=>{
+      if (params['id']){
+       this.taskService.getGroupTasks(params['id']!).subscribe(res=>{
          this.tasksGroup = res
-         console.log(res)
+         this.id = res.id
        })
-        this.index = params['index'];
         this.taskService.isActive = true;
       }else {
         this.taskService.isActive = false;

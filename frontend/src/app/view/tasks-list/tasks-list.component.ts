@@ -1,6 +1,6 @@
 import {Component, Input, OnInit} from '@angular/core';
 import {TasksGroup} from "../../models/tasks-group";
-import {TaskService} from "../../services/task.service";
+import {TaskGroupService} from "../../services/taskGroup.service";
 import {ActivatedRoute, Router} from "@angular/router";
 import {StyleService} from "../../services/style.service";
 
@@ -12,10 +12,10 @@ import {StyleService} from "../../services/style.service";
 export class TasksListComponent implements OnInit {
 
   @Input() tasksGroup:TasksGroup ;
-  @Input() index:number
+  @Input() taskgroupId:number
   isActive:boolean = false;
   tab:number[] = [1,2,3,4,5,6,7,8,9,10]
-  constructor(private taskService:TaskService,
+  constructor(private taskService:TaskGroupService,
               private route:Router,
               private router:ActivatedRoute,
               private styileService : StyleService) { }
@@ -26,14 +26,14 @@ export class TasksListComponent implements OnInit {
   }
 
 
-  removeTask(groupIndex: number, taskId: string) {
-    this.taskService.deleteTask(groupIndex, taskId)
+  removeTask(taskgroupId: any, taskId: any) {
+    //this.taskService.deleteTask(groupIndex, taskId)
     if (this.taskService.deletedTaskGroup != null){
       this.route.navigate(['/task-view'])
       this.taskService.deletedTaskGroup = null
     }
     else {
-      this.route.navigate(['/task-view',groupIndex])
+      this.route.navigate(['/task-view',taskgroupId])
     }
   }
 

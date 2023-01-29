@@ -1,7 +1,7 @@
 <h2>List</h2>
 <ul class="list-group">
-  <li *ngFor="let tasksgroup of tasksGroups;let index = index">
-    <a class="group-link" routerLink="/task-view/{{index}}"
+  <li *ngFor="let tasksgroup of tasksGroups">
+    <a class="group-link" routerLink="/task-view/{{tasksgroup.id}}"
     routerLinkActive="active-link">{{tasksgroup.title}}</a>
   </li>
   <li *ngIf="tasksGroups.length === 0" class="alert alert-warning w-80 warning">
@@ -10,7 +10,7 @@
 </ul>
 <div class="links d-flex align-items-center mt-4">
   <a href="" class="add-group" routerLink="/add-tasks-group"></a>
-  <a routerLink="/task-view" class="deleteAllbtn" (click)="deleteAll()"><i class="bi bi-trash-fill"></i></a>
+  <a href="/task-view" class="deleteAllbtn" (click)="deleteAll()"><i class="bi bi-trash-fill"></i></a>
 </div>
 
 
