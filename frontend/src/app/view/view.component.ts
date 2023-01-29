@@ -10,7 +10,7 @@ import {ActivatedRoute, Router} from "@angular/router";
 })
 export class ViewComponent implements OnInit {
 
-  tasksGroups : TasksGroup[];
+  tasksGroups : TasksGroup[] = [];
   tasksGroup:TasksGroup;
   id : number;
   constructor(private taskService : TaskGroupService,
