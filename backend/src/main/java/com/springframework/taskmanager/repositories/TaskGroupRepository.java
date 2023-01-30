@@ -9,5 +9,4 @@ import java.util.SortedSet;
 
 public interface TaskGroupRepository extends JpaRepository<TaskGroup,Long> {
 
-    Set<Task> findAllByid(Long id);
 }

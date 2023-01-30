@@ -1,6 +1,6 @@
 import {Component, Input, OnInit} from '@angular/core';
 import {TasksGroup} from "../../models/tasks-group";
-import {TaskGroupService} from "../../services/taskGroup.service";
+import {TaskService} from "../../services/task.service";
 import {ActivatedRoute, Router} from "@angular/router";
 import {StyleService} from "../../services/style.service";
 
@@ -15,7 +15,7 @@ export class TasksListComponent implements OnInit {
   @Input() taskgroupId:number
   isActive:boolean = false;
   tab:number[] = [1,2,3,4,5,6,7,8,9,10]
-  constructor(private taskService:TaskGroupService,
+  constructor(private taskService:TaskService,
               private route:Router,
               private router:ActivatedRoute,
               private styileService : StyleService) { }
@@ -26,8 +26,8 @@ export class TasksListComponent implements OnInit {
   }
 
 
-  removeTask(taskgroupId: any, taskId: any) {
-    //this.taskService.deleteTask(groupIndex, taskId)
+  removeTask(taskgroupId:number,taskId: any) {
+    this.taskService.deleteTaskById(taskId).subscribe();
     if (this.taskService.deletedTaskGroup != null){
       this.route.navigate(['/task-view'])
       this.taskService.deletedTaskGroup = null

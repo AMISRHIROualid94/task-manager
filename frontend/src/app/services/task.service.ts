@@ -7,10 +7,11 @@ import {Observable} from "rxjs";
 @Injectable({
   providedIn: 'root'
 })
-export class TaskGroupService {
+export class TaskService {
 
   constructor(private http : HttpClient) { }
   url = "http://localhost:8080/taskGroups";
+  url2 = "http://localhost:8080/tasks";
 
   isActive = false;
   editIsActive = false;
@@ -33,7 +34,7 @@ export class TaskGroupService {
   }
 
   deleteAll(): Observable<any> {
-    return this.http.delete(this.url+"/deleteall");
+    return this.http.delete(this.url);
   }
 
   /* Handle Tasks for TaskGroup*/
@@ -41,6 +42,9 @@ export class TaskGroupService {
     return this.http.post<Task>(this.url+"/"+tgId+"/tasks",newTask)
   }
 
+  deleteTaskById(id:number):Observable<any>{
+    return this.http.delete(this.url2 +"/"+id);
+  }
 
 
 

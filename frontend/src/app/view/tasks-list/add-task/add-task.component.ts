@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import {TaskGroupService} from "../../../services/taskGroup.service";
+import {TaskService} from "../../../services/task.service";
 import {ActivatedRoute} from "@angular/router";
 import {Task} from "../../../models/Task";
 
@@ -13,12 +13,12 @@ export class AddTaskComponent implements OnInit {
   description: string=""
   currentIndex: number
   editIsActive= false
-  constructor(private taskService : TaskGroupService,
+  constructor(private taskService : TaskService,
               private route:ActivatedRoute) { }
 
   ngOnInit(): void {
     this.route.params.subscribe(params => {
-      this.currentIndex = +params['index'];
+      this.currentIndex = params['id'];
       if(this.taskService.editIsActive){
         //this.description = this.taskService.getTask(this.currentIndex,params['taskId']).description
       }

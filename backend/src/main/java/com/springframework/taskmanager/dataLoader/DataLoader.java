@@ -23,16 +23,17 @@ public class DataLoader implements CommandLineRunner {
     @Override
     public void run(String... args) throws Exception {
 
-        Task task1 = new Task(1L,"task test 1");
-        taskRepository.save(task1);
-        Task task2 = new Task(2L,"task test 2");
-        taskRepository.save(task2);
-        Set<Task> tasks = new HashSet<>();
-        tasks.add(task1);
-        tasks.add(task2);
+        TaskGroup taskGroup1 = new TaskGroup();
+        taskGroup1.setTitle("Groupe 1");
 
-        TaskGroup taskGroup1 = new TaskGroup(1L,"Group 1",tasks);
+        Task task1 = new Task();
+        task1.setDescription("task test");
+        task1.setTaskgroup(taskGroup1);
+        taskGroup1.getTasks().add(task1);
+
         taskGroupRepository.save(taskGroup1);
+
+
 
     }
 }
