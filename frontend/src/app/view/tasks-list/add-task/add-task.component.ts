@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import {TaskGroupService} from "../../../services/taskGroup.service";
 import {ActivatedRoute} from "@angular/router";
+import {Task} from "../../../models/Task";
 
 @Component({
   selector: 'app-add-task',
@@ -32,8 +33,9 @@ export class AddTaskComponent implements OnInit {
   }
 
 addNewTask(){
+    let newTask:Task = {description:this.description}
     this.route.params.subscribe(params => {
-     // this.taskService.addNewTask(+params['index'],this.description);
+     this.taskService.addNewTask(newTask,params['id']).subscribe();
     })
   alert("Task added successfully")
 

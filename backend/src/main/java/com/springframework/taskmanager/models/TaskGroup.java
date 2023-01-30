@@ -24,5 +24,6 @@ public class TaskGroup {
     @JoinTable(name = "tasks_groups",
             joinColumns = @JoinColumn(name = "task_id"),
             inverseJoinColumns = @JoinColumn(name = "taskgroup_id"))
+    @OrderBy("id")
     private Set<Task> tasks = new HashSet<>();
 }
