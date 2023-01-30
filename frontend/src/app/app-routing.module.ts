@@ -9,7 +9,7 @@ import {StyleConfigComponent} from "./view/style-config/style-config.component";
 const routes: Routes = [
   {path:'style-config', component: StyleConfigComponent},
   {path:'task-view/:id',component:ViewComponent},
-  {path: 'task-view/:id/edit-task/:id', component:AddTaskComponent},
+  {path: 'task-view/:id/edit-task/:taskId', component:AddTaskComponent},
   {path: 'task-view', component:ViewComponent},
   {path: 'add-task/:id', component:AddTaskComponent},
   {path: 'add-tasks-group', component:AddTasksGroupComponent},

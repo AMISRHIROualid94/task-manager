@@ -13,9 +13,9 @@ export class ViewComponent implements OnInit {
   tasksGroups : TasksGroup[] = [];
   tasksGroup:TasksGroup;
   id : number;
+
   constructor(private taskService : TaskService,
-              private router:ActivatedRoute,
-              private route:Router) { }
+              private router:ActivatedRoute) { }
 
   ngOnInit(): void {
     this.taskService.editIsActive = false
@@ -26,7 +26,6 @@ export class ViewComponent implements OnInit {
       if (params.has("id")){
        this.taskService.getGroupTasks(+params.get("id")!).subscribe(res=>{
          this.tasksGroup = res
-         console.log(this.tasksGroup)
          this.id = res.id
        })
         this.taskService.isActive = true;

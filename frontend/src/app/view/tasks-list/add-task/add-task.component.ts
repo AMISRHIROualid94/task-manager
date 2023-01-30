@@ -20,7 +20,7 @@ export class AddTaskComponent implements OnInit {
     this.route.params.subscribe(params => {
       this.currentIndex = params['id'];
       if(this.taskService.editIsActive){
-        //this.description = this.taskService.getTask(this.currentIndex,params['taskId']).description
+        //this.description = this.taskService.g(this.currentIndex,params['taskId']).description
       }
       if(params['taskId']){
         this.editIsActive = true
@@ -42,8 +42,9 @@ addNewTask(){
 }
 
   editTask() {
+    let newTask:Task = {description:this.description}
     this.route.params.subscribe(params => {
-      //this.taskService.editTask(params['index'],params['taskId'],this.description)
+      this.taskService.editTaskbyId(params['taskId'],newTask).subscribe()
     })
     alert("Task Edited successfully")
     this.taskService.editIsActive = false

@@ -21,8 +21,10 @@ export class TaskGroupListComponent implements OnInit {
 
 
   deleteAll() {
-    this.taskService.deleteAll().subscribe(res =>{
-      console.log(res)
+    this.taskService.deleteAll().subscribe(() =>{
+      this.taskService.getTasksGroupsApi().subscribe(res =>{
+        this.tasksGroups = res
+      })
     });
     this.isActive = false;
   }

@@ -35,9 +35,6 @@ export class TasksListComponent implements OnInit {
     });
   }
 
-  redirectTo(url:string){
-    this.ngOnInit();
-  }
   isNotNull() :boolean{
     return this.tasksGroup != null
   }

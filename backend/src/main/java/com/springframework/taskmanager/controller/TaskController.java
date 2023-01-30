@@ -1,12 +1,9 @@
 package com.springframework.taskmanager.controller;
 
 import com.springframework.taskmanager.models.Task;
-import com.springframework.taskmanager.models.TaskGroup;
+import com.springframework.taskmanager.repositories.TaskGroupRepository;
 import com.springframework.taskmanager.repositories.TaskRepository;
-import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
-
-import java.util.List;
 
 @RestController
 @RequestMapping("/tasks")
@@ -22,5 +19,11 @@ public class TaskController {
     @DeleteMapping("/{id}")
     public void deleteTaskById(@PathVariable Long id){
         taskRepository.deleteById(id);
+    }
+    @PutMapping("/{id}")
+    public Task UpdateTask(@PathVariable Long id, @RequestBody Task task){
+        task.setId(id);
+        task.setTaskgroup(taskRepository.findById(id).get().getTaskgroup());
+        return taskRepository.save(task);
     }
 }
