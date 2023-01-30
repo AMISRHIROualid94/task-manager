@@ -19,7 +19,6 @@ export class ViewComponent implements OnInit {
 
   ngOnInit(): void {
     this.taskService.editIsActive = false
-
     this.taskService.getTasksGroupsApi().subscribe(res =>{
       this.tasksGroups = res
     })

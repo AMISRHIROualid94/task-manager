@@ -27,16 +27,17 @@ export class TasksListComponent implements OnInit {
 
 
   removeTask(taskgroupId:number,taskId: any) {
-    this.taskService.deleteTaskById(taskId).subscribe();
-    if (this.taskService.deletedTaskGroup != null){
-      this.route.navigate(['/task-view'])
-      this.taskService.deletedTaskGroup = null
-    }
-    else {
-      this.route.navigate(['/task-view',taskgroupId])
-    }
+    this.taskService.deleteTaskById(taskId).subscribe(()=>{
+      this.taskService.getGroupTasks(this.taskgroupId).subscribe(res =>{
+        this.tasksGroup = res
+        console.log(res)
+      })
+    });
   }
 
+  redirectTo(url:string){
+    this.ngOnInit();
+  }
   isNotNull() :boolean{
     return this.tasksGroup != null
   }
