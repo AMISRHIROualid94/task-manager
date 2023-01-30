@@ -11,16 +11,19 @@ import {Task} from "../../../models/Task";
 export class AddTaskComponent implements OnInit {
 
   description: string=""
-  currentIndex: number
+  currentId: number
   editIsActive= false
   constructor(private taskService : TaskService,
               private route:ActivatedRoute) { }
 
   ngOnInit(): void {
     this.route.params.subscribe(params => {
-      this.currentIndex = params['id'];
+      this.currentId = params['id'];
       if(this.taskService.editIsActive){
-        //this.description = this.taskService.g(this.currentIndex,params['taskId']).description
+        this.taskService.getTaskById(params['taskId']).subscribe(res =>{
+          this.description = res.description
+          console.log(this.description)
+        })
       }
       if(params['taskId']){
         this.editIsActive = true

@@ -5,6 +5,8 @@ import com.springframework.taskmanager.repositories.TaskGroupRepository;
 import com.springframework.taskmanager.repositories.TaskRepository;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
+
 @RestController
 @RequestMapping("/tasks")
 @CrossOrigin("*")
@@ -16,6 +18,15 @@ public class TaskController {
         this.taskRepository = taskRepository;
     }
 
+    @GetMapping
+    public List<Task> getTasks(){
+        return taskRepository.findAll();
+    }
+
+    @GetMapping("/{id}")
+    public Task getTaskById(@PathVariable Long id){
+        return taskRepository.findById(id).get();
+    }
     @DeleteMapping("/{id}")
     public void deleteTaskById(@PathVariable Long id){
         taskRepository.deleteById(id);

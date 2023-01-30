@@ -1,24 +1,24 @@
 <div class="add-task-view" *ngIf="!editIsActive">
-  <a class="back" routerLink="/task-view/{{currentIndex}}">
+  <a class="back" routerLink="/task-view/{{currentId}}">
     <i class="bi bi-arrow-left-square-fill">Back</i>
   </a>
   <h2>Add new task</h2>
   <form  (ngSubmit)="addNewTask()">
   <div class="inputs">
       <input type="text" [(ngModel)]="description" [ngModelOptions]="{standalone: true}" autofocus/>
-      <button type="submit">Add</button>
+      <button type="submit" [disabled]="!description">Add</button>
   </div>
   </form>
 </div>
   <div class="add-task-view" *ngIf="editIsActive">
-    <a class="back" routerLink="/task-view/{{currentIndex}}">
+    <a class="back" routerLink="/task-view/{{currentId}}">
       <i class="bi bi-arrow-left-square-fill">Back</i>
     </a>
   <h2>Edit task</h2>
   <form  (ngSubmit)="editTask()">
     <div class="inputs">
       <input type="text" [(ngModel)]="description" [ngModelOptions]="{standalone: true}" autofocus/>
-      <button type="submit">Edit</button>
+      <button type="submit" [disabled]="!description">Edit</button>
     </div>
   </form>
 </div>
