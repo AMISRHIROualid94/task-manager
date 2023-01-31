@@ -8,7 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 
-import java.util.Set;
+import java.util.*;
 
 @RestController
 @RequestMapping(value = "/taskGroups",produces = "application/json")
@@ -23,8 +23,10 @@ public class TaskGroupController {
 
 
     @GetMapping
-    public Set<TaskGroup> getAllGroups(){
-        return taskGroupService.findAll();
+    public List<TaskGroup> getAllGroups(){
+        List<TaskGroup> taskGroups = new ArrayList<>();
+        taskGroupService.findAll().forEach(taskGroups::add);
+        return taskGroups;
     }
 
     @GetMapping("/{id}")
@@ -40,7 +42,7 @@ public class TaskGroupController {
 
     /* Handle Tasks for TaskGroup*/
     @GetMapping("/{id}/tasks")
-    public Set<Task> getTasks(@PathVariable Long id){
+    public List<Task> getTasks(@PathVariable Long id){
         return taskService.findAll();
     }
 
@@ -72,5 +74,5 @@ public class TaskGroupController {
         return taskGroupService.save(taskGroup);
     }
 
-    
+
 }

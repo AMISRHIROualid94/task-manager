@@ -1,12 +1,10 @@
 package com.springframework.taskmanager.services;
 
-import org.springframework.data.repository.CrudRepository;
-
-import java.util.Set;
+import java.util.List;
 
 public interface CrudService <T,ID> {
 
-    Set<T> findAll();
+    List<T> findAll();
     T findById(ID id);
     T save(T object);
     void deleteAll();

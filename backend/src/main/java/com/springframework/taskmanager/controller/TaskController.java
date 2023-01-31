@@ -1,14 +1,11 @@
 package com.springframework.taskmanager.controller;
 
 import com.springframework.taskmanager.models.Task;
-import com.springframework.taskmanager.repositories.TaskGroupRepository;
-import com.springframework.taskmanager.repositories.TaskRepository;
 import com.springframework.taskmanager.services.TaskService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
-import java.util.Set;
 
 @RestController
 @RequestMapping("/tasks")
@@ -19,7 +16,7 @@ public class TaskController {
     private TaskService taskService;
 
     @GetMapping
-    public Set<Task> getTasks(){
+    public List<Task> getTasks(){
         return taskService.findAll();
     }
 

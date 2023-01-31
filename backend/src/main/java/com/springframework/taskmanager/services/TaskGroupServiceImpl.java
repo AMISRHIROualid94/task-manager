@@ -5,9 +5,7 @@ import com.springframework.taskmanager.repositories.TaskGroupRepository;
 import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 
-import java.util.HashSet;
-import java.util.Optional;
-import java.util.Set;
+import java.util.*;
 
 @Service
 public class TaskGroupServiceImpl implements TaskGroupService{
@@ -19,9 +17,10 @@ public class TaskGroupServiceImpl implements TaskGroupService{
     }
 
     @Override
-    public Set<TaskGroup> findAll() {
-        Set<TaskGroup> taskGroups = new HashSet<>();
-        taskGroupRepository.findAll(Sort.by(Sort.Direction.ASC, "id")).forEach(taskGroups::add);
+    public List<TaskGroup> findAll() {
+        List<TaskGroup> taskGroups = new ArrayList<>();
+        Sort sort = Sort.by(Sort.Direction.DESC,"createAt");
+        taskGroupRepository.findAll(sort).forEach(taskGroups::add);
         return taskGroups;
     }
 

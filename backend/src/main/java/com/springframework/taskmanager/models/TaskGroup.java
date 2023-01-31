@@ -23,5 +23,6 @@ public class TaskGroup {
 
 
     @OneToMany(cascade = CascadeType.ALL,mappedBy = "taskgroup")
+    @OrderBy("createAt")
     private Set<Task> tasks = new HashSet<>();
 }
