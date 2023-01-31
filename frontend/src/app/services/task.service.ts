@@ -52,7 +52,7 @@ export class TaskService {
   }
 
   editTaskbyId(id:number,task:Task):Observable<Task>{
-    return this.http.put<Task>(this.url2 + "/" + id,task)
+    return this.http.patch<Task>(this.url2 + "/" + id,task)
   }
 
 

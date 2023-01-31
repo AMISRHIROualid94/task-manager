@@ -3,38 +3,40 @@ package com.springframework.taskmanager.controller;
 import com.springframework.taskmanager.models.Task;
 import com.springframework.taskmanager.repositories.TaskGroupRepository;
 import com.springframework.taskmanager.repositories.TaskRepository;
+import com.springframework.taskmanager.services.TaskService;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
+import java.util.Set;
 
 @RestController
 @RequestMapping("/tasks")
 @CrossOrigin("*")
 public class TaskController {
 
-    private final TaskRepository taskRepository;
-
-    public TaskController(TaskRepository taskRepository) {
-        this.taskRepository = taskRepository;
-    }
+    @Autowired
+    private TaskService taskService;
 
     @GetMapping
-    public List<Task> getTasks(){
-        return taskRepository.findAll();
+    public Set<Task> getTasks(){
+        return taskService.findAll();
     }
 
     @GetMapping("/{id}")
     public Task getTaskById(@PathVariable Long id){
-        return taskRepository.findById(id).get();
+        return taskService.findById(id);
     }
     @DeleteMapping("/{id}")
     public void deleteTaskById(@PathVariable Long id){
-        taskRepository.deleteById(id);
+        taskService.deleteById(id);
     }
-    @PutMapping("/{id}")
-    public Task UpdateTask(@PathVariable Long id, @RequestBody Task task){
-        task.setId(id);
-        task.setTaskgroup(taskRepository.findById(id).get().getTaskgroup());
-        return taskRepository.save(task);
+    @PatchMapping("/{id}")
+    public Task UpdateTask(@PathVariable Long id, @RequestBody Task patch){
+        Task task = taskService.findById(id);
+        if(patch.getDescription() !=null){
+            task.setDescription(patch.getDescription());
+        }
+        return taskService.save(task);
     }
 }

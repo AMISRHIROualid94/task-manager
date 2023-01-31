@@ -36,7 +36,9 @@ export class AddTaskComponent implements OnInit {
   }
 
 addNewTask(){
-    let newTask:Task = {description:this.description}
+    let newTask:Task = {
+      description:this.description
+    }
     this.route.params.subscribe(params => {
      this.taskService.addNewTask(newTask,params['id']).subscribe();
     })
@@ -45,7 +47,9 @@ addNewTask(){
 }
 
   editTask() {
-    let newTask:Task = {description:this.description}
+    let newTask:Task = {
+      description:this.description
+    }
     this.route.params.subscribe(params => {
       this.taskService.editTaskbyId(params['taskId'],newTask).subscribe()
     })
