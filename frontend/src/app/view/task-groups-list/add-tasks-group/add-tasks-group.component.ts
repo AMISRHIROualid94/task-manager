@@ -20,7 +20,8 @@ export class AddTasksGroupComponent implements OnInit {
 
   addNewTaskGroup(){
     let newTaskgroup:TasksGroup = {
-      title:this.title
+      title:this.title,
+      tasks:[]
     }
     this.taskService.addNewTasksGroupApi(newTaskgroup).subscribe()
     alert("successfully added")

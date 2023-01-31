@@ -50,8 +50,9 @@ public class TaskGroupController {
     public TaskGroup addNewTask(@PathVariable Long id,@RequestBody Task task){
         TaskGroup taskGroup = taskGroupRepository.findById(id).get();
         task.setTaskgroup(taskGroup);
-        taskRepository.save(task);
         taskGroup.getTasks().add(task);
+        taskRepository.save(task);
+
         return taskGroupRepository.save(taskGroup);
     }
     @DeleteMapping("/{id}/tasks/{tId}")

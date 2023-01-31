@@ -25,13 +25,16 @@ public class DataLoader implements CommandLineRunner {
 
         TaskGroup taskGroup1 = new TaskGroup();
         taskGroup1.setTitle("Groupe 1");
+        taskGroup1.setTasks(new HashSet<>());
+        taskGroupRepository.save(taskGroup1);
+
 
         Task task1 = new Task();
         task1.setDescription("task test");
         task1.setTaskgroup(taskGroup1);
         taskGroup1.getTasks().add(task1);
+        taskRepository.save(task1);
 
-        taskGroupRepository.save(taskGroup1);
 
 
 
