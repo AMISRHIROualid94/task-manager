@@ -25,6 +25,7 @@ export class TaskGroupListComponent implements OnInit {
     this.taskService.deleteAll().subscribe(() =>{
       this.taskService.getTasksGroupsApi().subscribe(res =>{
         this.tasksGroups = res
+        this.router.navigate(['/task-view'])
       })
     });
     this.isActive = false;

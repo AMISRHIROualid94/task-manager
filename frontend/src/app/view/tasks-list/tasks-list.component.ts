@@ -30,7 +30,6 @@ export class TasksListComponent implements OnInit {
     this.taskService.deleteTaskById(taskId).subscribe(()=>{
       this.taskService.getGroupTasks(this.taskgroupId).subscribe(res =>{
         this.tasksGroup = res
-        console.log(res)
       })
     });
   }

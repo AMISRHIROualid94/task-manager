@@ -14,12 +14,14 @@ import java.util.Set;
 @NoArgsConstructor
 @Entity
 @Table(name = "task-groups")
-public class TaskGroup implements Serializable {
+public class TaskGroup {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long Id;
     private String title;
+
+
 
     @OneToMany(cascade = CascadeType.ALL,mappedBy = "taskgroup")
     @OrderBy("id")
