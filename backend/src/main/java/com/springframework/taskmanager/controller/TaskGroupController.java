@@ -64,6 +64,10 @@ public class TaskGroupController {
         this.taskGroupRepository.deleteAll();
     }
 
+    @DeleteMapping("/{id}")
+    public void deleteTAskGroupById(@PathVariable Long id){
+        taskGroupRepository.deleteById(id);
+    }
     @PutMapping("/{id}")
     public TaskGroup updateTaskGroup(@PathVariable Long id,@RequestBody TaskGroup taskGroup){
         taskGroup.setId(id);

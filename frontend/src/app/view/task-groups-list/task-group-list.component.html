@@ -2,7 +2,10 @@
 <ul class="list-group">
   <li *ngFor="let tasksgroup of tasksGroups">
     <a class="group-link" routerLink="/task-view/{{tasksgroup.id}}"
-    routerLinkActive="active-link">{{tasksgroup.title}}</a>
+    routerLinkActive="active-link">
+      {{tasksgroup.title}}
+    </a>
+    <a routerLink="/task-view" (click)="deleteTaskGroup(tasksgroup.id)"><i class="bi bi-x"></i></a>
   </li>
   <li *ngIf="tasksGroups.length === 0" class="alert alert-warning w-80 warning">
     Add A new Task Group ....

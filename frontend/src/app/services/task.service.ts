@@ -31,6 +31,9 @@ export class TaskService {
     return this.http.delete(this.url);
   }
 
+  deleteTaskGroupById(id:number):Observable<any>{
+    return this.http.delete(this.url + "/" +id);
+  }
   /* Handle Tasks for TaskGroup*/
   getGroupTasks(id:number):Observable<any>{
     return this.http.get(this.url+"/"+id);
