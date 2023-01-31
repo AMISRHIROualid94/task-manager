@@ -35,6 +35,7 @@ export class TaskGroupListComponent implements OnInit {
     this.taskService.deleteTaskGroupById(id).subscribe(()=>{
       this.taskService.getTasksGroupsApi().subscribe(res =>{
         this.tasksGroups = res
+        this.router.navigate(['task-view'])
       })
     })
 
