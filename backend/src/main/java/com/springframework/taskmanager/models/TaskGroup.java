@@ -1,10 +1,8 @@
 package com.springframework.taskmanager.models;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import lombok.*;
 
-import java.io.Serializable;
 import java.util.HashSet;
 import java.util.Set;
 
